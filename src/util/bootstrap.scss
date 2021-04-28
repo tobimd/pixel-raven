@@ -1,0 +1,108 @@
+// Colors redefinition
+
+$blue: #0d6efd;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #d63384;
+$red: #dc3545;
+$orange: #fd7e14;
+$yellow: #ffc107;
+$green: #198754;
+$teal: #20c997;
+$cyan: #0dcaf0;
+
+$colors-map: (
+  "blue": $blue,
+  "indigo": $indigo,
+  "purple": $purple,
+  "pink": $pink,
+  "red": $red,
+  "orange": $orange,
+  "yellow": $yellow,
+  "green": $green,
+  "teal": $teal,
+  "cyan": $cyan,
+);
+/*
+$primary: $blue;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+
+$theme-colors: (
+  "test": rgb(255, 88, 88),
+); */
+
+// Font sizes redefinition
+$font-size-base: 1rem;
+
+$h1-font-size: $font-size-base * 12;
+$h2-font-size: $font-size-base * 7.2;
+$h3-font-size: $font-size-base * 4;
+$h4-font-size: $font-size-base * 2.5;
+$h5-font-size: $font-size-base * 2;
+$h6-font-size: $font-size-base * 1.75;
+$h7-font-size: $font-size-base * 1.5;
+$h8-font-size: $font-size-base * 1.25;
+$h9-font-size: $font-size-base * 1;
+$h10-font-size: $font-size-base * 0.5;
+
+$font-sizes: (
+  1: $h1-font-size,
+  2: $h2-font-size,
+  3: $h3-font-size,
+  4: $h4-font-size,
+  5: $h5-font-size,
+  6: $h6-font-size,
+  7: $h7-font-size,
+  8: $h8-font-size,
+  9: $h9-font-size,
+  10: $h10-font-size,
+);
+
+// Bootstrap import
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+.debug {
+  @each $name,
+    $color
+      in map-merge(map-get(map-get($utilities, "color"), "values"), $colors-map)
+  {
+    &-#{$name} {
+      border: 3px dashed $color;
+    }
+
+    &-#{$name}-sm {
+      border: 1px dashed $color;
+    }
+
+    &-#{$name}-md {
+      border: 3px dashed $color;
+    }
+
+    &-#{$name}-lg {
+      border: 5px dashed $color;
+    }
+  }
+}
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "font-size":
+      map-merge(
+        map-get($utilities, "font-size"),
+        (
+          values: $font-sizes,
+        )
+      ),
+    /* "color":
+      map-merge(
+        map-get($utilities, "color"),
+        (
+          values: $theme-colors,
+        )
+      ), */
+  )
+);
