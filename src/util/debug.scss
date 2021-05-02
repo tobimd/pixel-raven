@@ -1,0 +1,25 @@
+@import "./colors.scss";
+
+$sm-border: 1px;
+$md-border: 3px;
+$lg-border: 5px;
+
+.debug {
+  @each $name, $color in $basic-colors {
+    &-#{$name} {
+      border: $sm-border dashed $color;
+    }
+
+    &-#{$name}-sm {
+      border: $sm-border dashed $color;
+    }
+
+    &-#{$name}-md {
+      border: $md-border dashed $color;
+    }
+
+    &-#{$name}-lg {
+      border: $lg-border dashed $color;
+    }
+  }
+}
