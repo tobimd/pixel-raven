@@ -1,34 +1,28 @@
+@use "sass:list";
 @import "./colors.scss";
 
-// Font sizes redefinition
-$font-size-base: 1rem;
+$font-scales: 0.5, 1, 1.25, 1.5, 1.75, 2, 2.5, 4, 7.2, 12;
+$font-sizes: ();
 
-$h1-font-size: $font-size-base * 12;
-$h2-font-size: $font-size-base * 7.2;
-$h3-font-size: $font-size-base * 4;
-$h4-font-size: $font-size-base * 2.5;
-$h5-font-size: $font-size-base * 2;
-$h6-font-size: $font-size-base * 1.75;
-$h7-font-size: $font-size-base * 1.5;
-$h8-font-size: $font-size-base * 1.25;
-$h9-font-size: $font-size-base * 1;
-$h10-font-size: $font-size-base * 0.5;
+$vw-sizes: ();
+$vh-sizes: ();
 
-$font-sizes: (
-  1: $h1-font-size,
-  2: $h2-font-size,
-  3: $h3-font-size,
-  4: $h4-font-size,
-  5: $h5-font-size,
-  6: $h6-font-size,
-  7: $h7-font-size,
-  8: $h8-font-size,
-  9: $h9-font-size,
-  10: $h10-font-size,
-);
+@for $i from 1 to 11 {
+  $font-sizes: map-merge(
+    $font-sizes,
+    (
+      $i: 1rem * list.nth($font-scales, $i),
+    )
+  );
+
+  $vw-sizes: map-merge($vw-sizes, (#{$i * 10}: #{$i * 10}vw));
+  $vh-sizes: map-merge($vh-sizes, (#{$i * 10}: #{$i * 10}vh));
+}
 
 // Bootstrap import
-@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/utilities";
 
 $utilities: map-merge(
   $utilities,
@@ -40,12 +34,21 @@ $utilities: map-merge(
           values: $font-sizes,
         )
       ),
-    /* "color":
+    "viewport-width":
       map-merge(
-        map-get($utilities, "color"),
+        map-get($utilities, "viewport-width"),
         (
-          values: $theme-colors,
+          values: $vw-sizes,
         )
-      ), */
+      ),
+    "viewport-height":
+      map-merge(
+        map-get($utilities, "viewport-height"),
+        (
+          values: $vh-sizes,
+        )
+      ),
   )
 );
+
+@import "~bootstrap/scss/bootstrap.scss";
