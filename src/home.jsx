@@ -5,9 +5,9 @@ import { hot } from 'react-hot-loader/root';
 const Home = () => {
   return (
     <>
-    <div className="d-flex justify-content-center vh-50 vw-50 debug-red fs-5">
-      a
-    </div>
+      <div className="d-flex justify-content-center m-5">
+        <h1>Hello</h1>
+      </div>
     </>
   );
 }
