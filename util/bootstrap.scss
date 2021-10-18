@@ -11,7 +11,7 @@ $vh-sizes: ();
   $font-sizes: map-merge(
     $font-sizes,
     (
-      $i: 1rem * list.nth($font-scales, $i),
+      $i: "#{nth($font-scales, $i)}rem",
     )
   );
 

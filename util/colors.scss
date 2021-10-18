@@ -1,7 +1,12 @@
 // Theme colors
-$c-white: #e0e0e0;
-$c-dark-gray: #44464c;
-$c-black: #272727;
+$__white: #e0e0e0;
+$__dark-gray: #44464c;
+$__black: #272727;
+$__primary: #419fdf;
+$__success: #5cc76e;
+$__info: #f070df;
+$__warning: #ffe053;
+$__danger: #e63749;
 
 // Bootstrap colors
 $blue: #0d6efd;
@@ -27,14 +32,3 @@ $basic-colors: (
   "teal": $teal,
   "cyan": $cyan,
 );
-
-/*
-$primary: $blue;
-$success: $green;
-$info: $cyan;
-$warning: $yellow;
-$danger: $red;
-
-$theme-colors: (
-  "test": rgb(255, 88, 88),
-); */
